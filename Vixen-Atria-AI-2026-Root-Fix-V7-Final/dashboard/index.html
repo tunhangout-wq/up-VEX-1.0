@@ -1,0 +1,302 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#080d18">
+  <meta name="color-scheme" content="dark">
+  <title>Vixen EDR — مركز التحكم</title>
+  <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/assets/style.css">
+</head>
+<body>
+  <div id="toastStack" class="toast-stack" aria-live="polite"></div>
+
+  <section id="login" class="login-shell">
+    <div class="login-art">
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="login-art-copy">
+        <span class="eyebrow">VIXEN EDR / DISCORD OPERATIONS</span>
+        <h1>إدارة سيرفرك<br><em>بدقة ووضوح.</em></h1>
+        <p>مركز تحكم واحد للأمان، الأعضاء، الاقتصاد وأوامر البوت التنفيذية.</p>
+        <div class="login-points">
+          <span><b>01</b> أوامر حقيقية وليست أزرارًا وهمية</span>
+          <span><b>02</b> صلاحيات موحّدة مع البوت</span>
+          <span><b>03</b> سجل تدقيق مباشر لكل عملية</span>
+        </div>
+      </div>
+    </div>
+    <div class="login-panel">
+      <div class="login-brand"><span class="brand-mark">V</span><div><b>VIXEN</b><small>CONTROL CENTER</small></div></div>
+      <div class="login-heading"><span class="eyebrow">SECURE ACCESS</span><h2>مرحبًا بعودتك</h2><p>سجّل الدخول للوصول إلى أدوات الإدارة.</p></div>
+      <div class="login-tabs">
+        <button type="button" id="ownerTab" class="tab active">المالك</button>
+        <button type="button" id="codeTab" class="tab">كود الفريق</button>
+      </div>
+      <form id="loginForm" class="login-form">
+        <div id="ownerFields" class="form-stack">
+          <label>Discord Owner ID<input id="owner" inputmode="numeric" autocomplete="username" placeholder="مثال: 123456789012345678"></label>
+          <label>كلمة مرور اللوحة<input id="pass" type="password" autocomplete="current-password" placeholder="أدخل كلمة المرور"></label>
+        </div>
+        <div id="codeFields" class="form-stack hidden">
+          <label>Staff activation code<input id="staffCode" autocomplete="one-time-code" placeholder="CB-TEAM-XXXXXX"></label>
+        </div>
+        <button class="primary wide" type="submit"><span>دخول آمن</span><span>←</span></button>
+      </form>
+      <div id="loginErr" class="form-error" role="alert"></div>
+      <div class="login-foot"><span class="status-dot"></span> الاتصال محمي بجلسة مؤقتة</div>
+    </div>
+  </section>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar">
+      <div class="sidebar-top">
+        <div class="login-brand"><span class="brand-mark">V</span><div><b>VIXEN</b><small>CONTROL CENTER</small></div></div>
+        <button id="sidebarCollapse" class="icon-button desktop-only" aria-label="طي القائمة الجانبية" title="طي/توسيع القائمة">«</button>
+        <button id="mobileClose" class="icon-button mobile-only" aria-label="إغلاق القائمة">×</button>
+      </div>
+      <div class="server-chip">
+        <span class="server-icon">✦</span>
+        <div><b id="serverName">Vixen Discord</b><small id="sessionRank">جلسة الإدارة</small></div>
+        <span class="live-dot"></span>
+      </div>
+      <div class="nav-scroll">
+      <nav class="main-nav" aria-label="التنقل الرئيسي">
+        <div class="nav-label">WORKSPACE</div>
+         <button type="button" data-page="overview" class="active" aria-current="page"><span class="nav-icon">⌂</span><span class="nav-text">نظرة عامة</span></button>
+         <button type="button" data-page="commands"><span class="nav-icon">⌘</span><span class="nav-text">مركز الأوامر</span><b id="cmdCount" class="nav-count">0</b></button>
+         <button type="button" data-page="members"><span class="nav-icon">♙</span><span class="nav-text">الأعضاء والرسائل</span></button>
+        <div class="nav-label">MANAGEMENT</div>
+         <button type="button" data-page="security"><span class="nav-icon">◈</span><span class="nav-text">الأمان والإشراف</span></button>
+         <button type="button" data-page="economy"><span class="nav-icon">◉</span><span class="nav-text">الاقتصاد</span></button>
+         <button type="button" data-page="staff"><span class="nav-icon">◇</span><span class="nav-text">الفريق والصلاحيات</span></button>
+        <div class="nav-label">TOOLS</div>
+         <button type="button" data-page="atria"><span class="nav-icon">◈</span><span class="nav-text">AI Moderation</span><span class="ai-badge">AI</span></button>
+         <button type="button" data-page="ai-chat"><span class="nav-icon">✦</span><span class="nav-text">AI Chat</span><span class="ai-badge">AI</span></button>
+        <div class="nav-label">COMMUNICATION</div>
+         <button type="button" data-page="dm-center"><span class="nav-icon">✉</span><span class="nav-text">DM Center</span></button>
+         <button type="button" data-page="dm-all"><span class="nav-icon">✉+</span><span class="nav-text">DM All</span><span class="ai-badge">BULK</span></button>
+         <button type="button" data-page="voice"><span class="nav-icon">♫</span><span class="nav-text">Voice</span></button>
+        <div class="nav-label">SYSTEM</div>
+         <button type="button" data-page="bot-profile"><span class="nav-icon">◉</span><span class="nav-text">Bot Profile</span></button>
+         <button type="button" data-page="terminal"><span class="nav-icon">▣</span><span class="nav-text">Live Terminal</span></button>
+         <button type="button" data-page="logs"><span class="nav-icon">≡</span><span class="nav-text">سجل التدقيق</span></button>
+         <button type="button" data-page="settings"><span class="nav-icon">⚙</span><span class="nav-text">الإعدادات</span></button>
+      </nav>
+      </div>
+      <div class="sidebar-bottom">
+        <div class="operator-card"><span class="avatar" id="operatorAvatar">V</span><div><b id="operatorName">Dashboard</b><small id="operatorRole">Staff operator</small></div></div>
+        <button id="logout" class="logout-button"><span>⇥</span><span class="nav-text">تسجيل الخروج</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="topbar-start"><button id="mobileOpen" class="icon-button mobile-only">☰</button><div><span class="eyebrow">VIXEN DISCORD EDR</span><h1 id="title">نظرة عامة</h1></div></div>
+        <div class="topbar-actions"><div class="connection-status"><span class="live-dot"></span><span id="statusText">جاري التحقق</span></div><button type="button" class="icon-button" data-page="settings" title="الإعدادات" aria-label="الإعدادات">⚙</button></div>
+      </header>
+
+      <section id="overview" class="page">
+        <div class="welcome-row"><div><p class="section-kicker">لوحة التشغيل اليومية</p><h2>مرحبًا، <span id="welcomeName">operator</span></h2><p class="muted">تابع حالة البوت ونفّذ أهم العمليات من مكان واحد.</p></div><button class="primary" data-page="commands">فتح مركز الأوامر <span>←</span></button></div>
+        <div class="stat-grid">
+          <article class="stat-card accent-blue"><div class="stat-head"><span>الأعضاء المسجلون</span><span class="stat-icon">♙</span></div><strong id="sUsers">—</strong><small>في نظام Vixen</small></article>
+          <article class="stat-card accent-green"><div class="stat-head"><span>إجمالي الاقتصاد</span><span class="stat-icon">◉</span></div><strong id="sMoney">—</strong><small id="currencyLabel">عملة متداولة</small></article>
+          <article class="stat-card accent-orange"><div class="stat-head"><span>القروض النشطة</span><span class="stat-icon">↗</span></div><strong id="sLoans">—</strong><small>تحتاج متابعة</small></article>
+          <article class="stat-card accent-purple"><div class="stat-head"><span>زمن الاستجابة</span><span class="stat-icon">◌</span></div><strong id="sPing">—</strong><small id="botLabel">البوت متصل</small></article>
+        </div>
+        <div class="content-grid overview-grid">
+          <article class="panel quick-panel"><div class="panel-heading"><div><span class="section-kicker">QUICK ACTIONS</span><h3>عمليات سريعة</h3></div><span class="panel-icon">✦</span></div><p class="muted">الأزرار التالية تستدعي أوامر Discord الحقيقية بصلاحياتك.</p><div class="action-grid"><button data-command="server.lockdown" class="action-button danger"><span>🔒</span><b>قفل السيرفر</b><small>Lockdown</small></button><button data-command="server.unlockdown" class="action-button"><span>🔓</span><b>فتح السيرفر</b><small>Unlockdown</small></button><button data-command="security.bans" class="action-button"><span>🔨</span><b>قائمة المحظورين</b><small>Ban list</small></button><button data-command="security.webhooks" class="action-button"><span>⌁</span><b>فحص Webhooks</b><small>Security scan</small></button></div></article>
+          <article class="panel health-panel"><div class="panel-heading"><div><span class="section-kicker">SYSTEM HEALTH</span><h3>حالة النظام</h3></div><span class="health-ring">✓</span></div><div class="health-list"><div><span class="health-name"><i class="health-dot good"></i> Discord Gateway</span><b id="healthGateway">جاري التحقق</b></div><div><span class="health-name"><i class="health-dot good"></i> Dashboard API</span><b id="healthApi">يعمل</b></div><div><span class="health-name"><i class="health-dot good"></i> Command registry</span><b id="healthCommands">—</b></div></div><button type="button" class="secondary wide" data-page="logs">عرض سجل العمليات <span>←</span></button></article>
+        </div>
+      </section>
+
+      <section id="commands" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">EXECUTION LAYER</span><h2>مركز الأوامر</h2><p class="muted">كتالوج حي من أوامر البوت المحمّلة — التنفيذ يمر عبر نفس الصلاحيات والمسار الحقيقي.</p></div><div class="intro-actions"><div class="intro-stat"><b id="visibleCommandCount">0</b><span>أمر ظاهر</span></div><button id="refreshCommands" class="secondary">تحديث الكتالوج ↻</button></div></div>
+        <div class="command-health"><span><i class="health-dot good"></i><b id="registryState">متصل</b><small>سجل الأوامر</small></span><span><b id="commandGroupCount">0</b><small>مجموعات</small></span><span><b id="commandRequiredCount">0</b><small>معاملات مطلوبة</small></span><span class="command-health-note">كل بطاقة تستدعي callback الحقيقي، وليست زرًا تجريبيًا.</span></div>
+        <div class="toolbar panel"><div class="search-box"><span>⌕</span><input id="cmdSearch" placeholder="ابحث باسم الأمر أو الوصف..."></div><select id="cmdGroup"><option value="">كل المجموعات</option></select><select id="cmdSort"><option value="name">ترتيب أبجدي</option><option value="group">حسب المجموعة</option></select></div>
+        <div id="commandsGrid" class="command-grid"></div>
+      </section>
+
+      <section id="members" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">COMMUNITY</span><h2>الأعضاء والرسائل</h2><p class="muted">ابحث في أعضاء السيرفر وأرسل رسالة مباشرة بصلاحية Vixen.</p></div></div>
+        <div class="content-grid member-grid"><article class="panel"><div class="panel-heading"><div><h3>أعضاء السيرفر</h3><span class="muted">يتم التحميل على دفعات</span></div><button id="loadMore" class="secondary">تحميل المزيد</button></div><div class="search-box member-search"><span>⌕</span><input id="memberSearch" placeholder="ابحث بالاسم أو ID..."></div><div id="membersList" class="members-list"></div></article><article class="panel dm-panel"><div class="panel-heading"><div><span class="section-kicker">DIRECT MESSAGE</span><h3>إرسال رسالة</h3></div><span class="panel-icon">✉</span></div><label>Member ID<input id="dmId" inputmode="numeric" placeholder="أدخل Discord ID"></label><label>الرسالة<textarea id="dmText" placeholder="اكتب رسالتك هنا..."></textarea></label><button id="sendDm" class="primary wide">إرسال عبر البوت <span>←</span></button><div id="dmResult" class="inline-result"></div></article></div>
+      </section>
+
+      <section id="dm-center" class="page hidden">
+        <div class="page-intro dm-hero"><div><span class="section-kicker">COMMUNICATION / DIRECT MESSAGES</span><h2>DM Center</h2><p class="muted">رسالة فردية احترافية: اختار العضو، القالب، النص والـEmbed، راجع المعاينة الحقيقية ثم أرسلها مع سجل دائم.</p></div><div class="dm-hero-actions"><button id="refreshDM" class="secondary">تحديث ↻</button><button class="primary" data-page="dm-all">فتح DM All →</button></div></div>
+        <div class="dm-kpi-grid"><article class="dm-kpi"><span>قوالب جاهزة</span><b id="dmTemplateCount">0</b><small>للسيرفر الحالي</small></article><article class="dm-kpi"><span>قابلة للإرسال الآن</span><b id="dmMemberCacheState">—</b><small>حالة member cache</small></article><article class="dm-kpi"><span>آخر إرسال</span><b id="dmLastSend">—</b><small>من سجل DM</small></article><article class="dm-kpi"><span>متغيرات ديناميكية</span><b>15+</b><small>تُملأ حسب المستلم</small></article></div>
+        <div class="content-grid dm-center-grid">
+          <article class="panel dm-compose-panel">
+            <div class="panel-heading"><div><span class="section-kicker">RECIPIENT / TEMPLATE</span><h3>المستلم والقالب</h3><span class="muted">القوالب معزولة لكل سيرفر وتدعم النص والـEmbed معًا.</span></div></div>
+            <label>السيرفر<select id="dmGuild"></select></label>
+            <div class="template-toolbar"><input id="dmTemplateSearch" placeholder="ابحث في القوالب…"><select id="dmTemplateCategoryFilter"><option value="">كل الفئات</option></select><button id="dmFavoriteOnly" type="button" class="secondary">★ المفضلة</button></div>
+            <label>بحث عضو<input id="dmMemberSearch" placeholder="Username أو Display Name أو ID"></label>
+            <div id="dmMemberResults" class="members-list"></div>
+            <label>Discord Member ID<input id="dmRecipientId" inputmode="numeric" placeholder="اختر عضوًا أو أدخل ID"></label>
+            <div id="dmSelectedMember" class="inline-result"></div>
+            <label>سبب / سياق الرسالة<input id="dmReason" maxlength="1000" placeholder="اختياري — يدعم {reason}"></label>
+            <label>القالب<select id="dmTemplate"><option value="">تصميم جديد</option></select></label>
+            <label>اسم القالب<input id="dmTemplateName" maxlength="100" placeholder="Welcome"></label>
+            <div class="form-grid"><label>وصف القالب<input id="dmTemplateDescription" maxlength="200" placeholder="متى تستخدم هذا القالب؟"></label><label>الفئة<input id="dmTemplateCategory" maxlength="40" placeholder="Community"></label></div>
+            <div class="actions-row template-actions"><button id="dmSaveTemplate" class="secondary">حفظ</button><button id="dmDuplicateTemplate" class="secondary">نسخ</button><button id="dmFavoriteTemplate" class="secondary">☆ مفضلة</button><button id="dmDeleteTemplate" class="secondary">حذف</button><button id="dmInstallTemplates" class="secondary">تثبيت المكتبة</button></div>
+          </article>
+          <article class="panel dm-designer-panel">
+            <div class="panel-heading"><div><span class="section-kicker">MESSAGE DESIGNER</span><h3>Composer + Embed Designer</h3><span class="muted">النص العادي اختياري، والـEmbed اختياري؛ تقدر تستعمل واحد أو الاثنين.</span></div><div class="actions-row"><button id="dmUseBranding" class="secondary">هوية السيرفر</button><button id="dmUseBotBranding" class="secondary">هوية البوت</button></div></div>
+            <label>Message content<textarea id="dmContent" maxlength="2000" placeholder="اكتب رسالة Discord العادية هنا…"></textarea><small class="field-hint"><span id="dmContentCount">0</span>/2000 · Variables متاحة.</small></label>
+            <div class="designer-divider"><span>EMBED</span></div>
+            <div class="form-grid"><label>Title<input id="dmTitle" maxlength="256"></label><label>Color<input id="dmColor" type="color" value="#f5a623"></label></div>
+            <label>Description<textarea id="dmDescription" maxlength="4096"></textarea></label>
+            <div class="form-grid"><label>Author<input id="dmAuthor" maxlength="256"></label><label>Author URL<input id="dmAuthorUrl" type="url"></label><label>Author Icon URL<input id="dmAuthorIcon" type="url"></label></div>
+            <div class="form-grid"><label>Thumbnail URL<input id="dmThumbnail" type="url"></label><label>Image URL<input id="dmImage" type="url"></label></div>
+            <div class="panel-heading compact"><div><h3>Fields</h3><span class="muted">حتى 25 field</span></div><button id="dmAddField" class="secondary">+ Field</button></div>
+            <div id="dmFields" class="dm-fields"></div>
+            <div class="form-grid"><label>Footer<input id="dmFooter" maxlength="2048"></label><label>Footer Icon URL<input id="dmFooterIcon" type="url"></label><label class="switch-row"><span><b>Timestamp</b><small>تاريخ ديناميكي</small></span><input id="dmTimestamp" type="checkbox"><i></i></label></div>
+            <div class="dm-variable-strip"><b>Variables:</b> {user} {mention} {username} {display_name} {user_id} {server} {server_id} {member_count} {moderator} {reason} {warnings} {roles} {date} {time} {timestamp} {bot}</div>
+            <div class="actions-row dm-send-actions"><button id="dmPreviewButton" class="secondary">معاينة حقيقية</button><button id="dmSendButton" class="primary">إرسال بعد التأكيد →</button></div>
+            <div id="dmCenterResult" class="inline-result"></div>
+            <div id="dmPreview" class="dm-preview" aria-live="polite"></div>
+          </article>
+        </div>
+        <article class="panel dm-history-panel"><div class="panel-heading"><div><span class="section-kicker">AUDIT / DELIVERY</span><h3>DM History</h3><span class="muted">نجاح وفشل فعليان مع فلترة وبحث.</span></div><div class="history-toolbar"><input id="dmHistorySearch" placeholder="بحث ID…"><select id="dmHistoryStatus"><option value="">كل الحالات</option><option value="success">Success</option><option value="failed">Failed</option></select><button id="refreshDMHistory" class="secondary">تحديث ↻</button></div></div><div class="table-wrap"><table><thead><tr><th>المستلم</th><th>القالب</th><th>المرسل</th><th>الحالة</th><th>الرسالة</th><th>الخطأ</th><th>الوقت</th></tr></thead><tbody id="dmHistory"></tbody></table></div></article>
+      </section>
+
+      <section id="dm-all" class="page hidden">
+        <div class="page-intro dm-hero"><div><span class="section-kicker">COMMUNICATION / CAMPAIGNS</span><h2>DM All</h2><p class="muted">حملة جماعية حقيقية: audience snapshot ثابت، preview قبل البداية، سرعة مضبوطة، وإدارة كاملة للحملة بدون إرسال مخفي.</p></div><div class="dm-hero-actions"><button id="refreshDMAll" class="secondary">تحديث ↻</button><button class="secondary" data-page="dm-center">← DM Center</button></div></div>
+        <div class="dm-safety-banner"><span>✓</span><div><b>Campaign safety</b><small>الـStart لا يتم إلا بعد preview + تأكيد العدد. البوت يحافظ على snapshot، يستبعد البوتات افتراضيًا، ويمنع التشغيل إذا كانت قائمة الأعضاء غير مكتملة.</small></div></div>
+        <div class="dm-all-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><span class="section-kicker">1 / AUDIENCE</span><h3>الجمهور المستهدف</h3></div></div>
+            <label>السيرفر<select id="dmAllGuild"></select></label>
+            <label>طريقة الاختيار<select id="dmAllMode"><option value="all">كل الأعضاء المطابقين</option><option value="roles">حسب Role</option><option value="selected">IDs محددة</option></select></label>
+            <div class="form-grid"><label class="switch-row"><span><b>استبعاد Bots</b><small>موصى به</small></span><input id="dmAllExcludeBots" type="checkbox" checked><i></i></label><label class="switch-row"><span><b>استبعاد Staff</b><small>يشمل Owner</small></span><input id="dmAllExcludeStaff" type="checkbox"><i></i></label><label class="switch-row"><span><b>استبعاد نفسي</b><small>هوية الجلسة</small></span><input id="dmAllExcludeSelf" type="checkbox" checked><i></i></label></div>
+            <label id="dmAllRoleWrap">Roles include<select id="dmAllRoles" multiple size="7"></select></label>
+            <label id="dmAllExcludeRoleWrap">Roles exclude<select id="dmAllExcludeRoles" multiple size="5"></select></label>
+            <label id="dmAllSelectedWrap" class="hidden">Member IDs<textarea id="dmAllSelectedIds" placeholder="كل ID في سطر أو مفصول بمسافة/فاصلة"></textarea></label>
+            <div class="dm-audience-card"><span class="dm-audience-label">MATCHED RECIPIENTS</span><b id="dmAllCount">—</b><small id="dmAllCacheState">اعمل Preview لحساب الجمهور.</small></div>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><span class="section-kicker">2 / MESSAGE</span><h3>الحملة والسرعة</h3></div></div>
+            <label>القالب<select id="dmAllTemplate"><option value="">استعمل Composer أدناه</option></select></label>
+            <label>سبب / سياق<input id="dmAllReason" maxlength="1000" placeholder="مثلاً: تحديث مهم للمجتمع"></label>
+            <label>Message content<textarea id="dmAllContent" maxlength="2000" placeholder="رسالة الحملة…"></textarea></label>
+            <div class="form-grid"><label>السرعة (رسالة/دقيقة)<input id="dmAllPPM" type="number" min="5" max="60" value="20"></label><label>الفئة/الهدف<span class="readout-input" id="dmAllTargetReadout">All members</span></label></div>
+            <div class="bulk-template-actions"><button id="dmAllLoadTemplate" class="secondary">تحميل قالب</button><button id="dmAllPreviewButton" class="secondary">Preview audience + message</button><button id="dmAllStart" class="primary" disabled>Start campaign →</button></div>
+            <div id="dmAllResult" class="inline-result"></div>
+            <div id="dmAllPreview" class="dm-preview"></div>
+          </article>
+        </div>
+        <article class="panel"><div class="panel-heading"><div><span class="section-kicker">3 / CAMPAIGN QUEUE</span><h3>الحملات</h3><span class="muted">كل حملة محفوظة وتقدر تتابعها أو توقفها أو تستأنفها.</span></div></div><div id="dmJobs" class="dm-job-list"></div></article>
+      </section>
+
+      <section id="security" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">PROTECTION</span><h2>الأمان والإشراف</h2><p class="muted">تحكم سريع في السيرفر، القنوات، الأعضاء وطبقة الحماية.</p></div></div>
+        <div class="security-grid"><article class="panel security-card"><span class="security-hero red">◈</span><h3>حماية السيرفر</h3><p class="muted">إجراءات الطوارئ وإدارة إعدادات السيرفر.</p><div class="button-list"><button data-command="server.lockdown">🔒 قفل كامل <small>server lockdown</small></button><button data-command="server.unlockdown">🔓 استعادة الحالة <small>server unlockdown</small></button><button data-command="server.features">▦ معلومات السيرفر <small>server features</small></button></div></article><article class="panel security-card"><span class="security-hero amber">⌁</span><h3>التحقق والمراقبة</h3><p class="muted">راجع الدعوات، Webhooks وسجل Discord.</p><div class="button-list"><button data-command="security.bans">🔨 المحظورون <small>security bans</small></button><button data-command="security.invites">🔗 الدعوات <small>security invites</small></button><button data-command="security.audit">≡ سجل Discord <small>security audit</small></button><button data-command="security.automod">◉ قواعد AutoMod <small>security automod</small></button></div></article><article class="panel security-card"><span class="security-hero blue">♙</span><h3>إدارة الأعضاء</h3><p class="muted">كل إجراءات الإشراف من مركز الأوامر.</p><div class="button-list"><button data-command="member.timeout">⏳ تقييد عضو <small>member timeout</small></button><button data-command="member.kick">👢 طرد عضو <small>member kick</small></button><button data-command="member.ban">🔨 حظر عضو <small>member ban</small></button><button data-command="utility.prune">✂ تنظيف الأعضاء <small>utility prune</small></button></div></article></div>
+      </section>
+
+      <section id="economy" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">ECONOMY CONTROL</span><h2>الاقتصاد</h2><p class="muted">عدّل أرصدة الأعضاء وراقب السوق والقروض.</p></div></div>
+        <div class="content-grid economy-grid"><article class="panel"><div class="panel-heading"><div><h3>إدارة الرصيد</h3><span class="muted">كل تغيير يسجل في سجل التدقيق</span></div><span class="panel-icon">◉</span></div><div class="form-grid"><label>Member ID<input id="moneyUser" inputmode="numeric" placeholder="Discord ID"></label><label>المحفظة / البنك<select id="moneyMode"><option value="wallet">المحفظة</option><option value="bank">البنك</option></select></label><label>العملية<select id="moneyAction"><option value="add">إضافة</option><option value="remove">سحب</option><option value="reset">تصفير</option></select></label><label>المبلغ<input id="moneyAmount" type="number" min="1" placeholder="0"></label></div><button id="moneySubmit" class="primary">تطبيق التغيير <span>←</span></button><div id="moneyResult" class="inline-result"></div></article><article class="panel"><div class="panel-heading"><div><h3>السوق الحالي</h3><span class="muted">آخر البيانات المحفوظة</span></div><button id="refreshMarket" class="icon-button">↻</button></div><div id="marketList" class="market-list"></div></article></div><article class="panel loans-panel"><div class="panel-heading"><div><h3>القروض</h3><span class="muted">آخر 50 قرضًا</span></div></div><div class="table-wrap"><table><thead><tr><th>المعرّف</th><th>المقترض</th><th>المبلغ</th><th>المدفوع</th><th>الحالة</th><th>الاستحقاق</th></tr></thead><tbody id="loansList"></tbody></table></div></article>
+      </section>
+
+      <section id="staff" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">ACCESS CONTROL</span><h2>الفريق والصلاحيات</h2><p class="muted">إدارة الرتب والأكواد مع احترام التسلسل الإداري.</p></div><button id="refreshStaff" class="secondary">تحديث البيانات ↻</button></div>
+        <div class="content-grid staff-grid"><article class="panel"><div class="panel-heading"><div><h3>أعضاء الفريق</h3><span class="muted">الرتب المفعّلة حاليًا</span></div></div><div id="staffList" class="staff-list"></div></article><article class="panel"><div class="panel-heading"><div><h3>توليد كود</h3><span class="muted">كود تفعيل لمرة واحدة</span></div><span class="panel-icon">+</span></div><div class="form-grid"><label>الرتبة<select id="codeRank"><option value="team">Team</option><option value="founder">Founder</option><option value="dev">Dev</option></select></label><label>العدد<input id="codeCount" type="number" min="1" max="10" value="1"></label></div><label>ملاحظة<input id="codeNote" placeholder="اختياري"></label><button id="generateCode" class="primary">توليد الكود <span>←</span></button><div id="generatedCodes" class="generated-codes"></div></article></div><article class="panel codes-panel"><div class="panel-heading"><div><h3>الأكواد</h3><span class="muted">الأكواد المنشأة وحالتها</span></div></div><div id="codesList" class="codes-list"></div></article>
+        <article class="panel"><div class="panel-heading"><div><h3>سجل التحذيرات</h3><span class="muted">من قاعدة البيانات الدائمة</span></div><button id="refreshStaffWarnings" class="secondary">تحديث ↻</button></div><div class="search-box member-search"><span>⌕</span><input id="staffWarningSearch" placeholder="ابحث بالعضو أو المشرف أو السبب"></div><div class="table-wrap"><table><thead><tr><th>العضو</th><th>المشرف</th><th>السبب</th><th>التاريخ</th></tr></thead><tbody id="staffWarnings"></tbody></table></div></article>
+      </section>
+
+      <section id="atria" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">AI / SECURITY AGENT</span><h2>AI Moderation</h2><p class="muted">تحليل الإشراف وتنفيذ الإجراءات يمران عبر Policy وTool Layer.</p></div><div class="intro-actions"><span id="aiProviderStatus" class="ai-pill" aria-live="polite">Checking provider…</span><span id="aiDashboardPulse" class="status-tag">LIVE</span><button id="aiTestProvider" class="secondary">اختبار اتصال AI</button></div></div>
+        <div id="aiProviderDetails" class="inline-result"></div>
+        <div class="content-grid atria-grid"><article class="panel"><div class="panel-heading"><div><h3>تحليل إداري</h3><span class="muted">فحص يدوي عبر AI Provider؛ لا ينفذ إجراءات Discord</span></div><span class="panel-icon">◈</span></div><textarea id="aiPrompt" class="ai-prompt" placeholder="الصق نصًا مطلوبًا تحليله..."></textarea><button id="aiModerate" class="secondary wide">تحليل النص</button><pre id="aiOut" class="ai-output">تظهر نتيجة التحليل هنا.</pre></article><article class="panel"><div class="panel-heading"><div><h3>المراقبة الآلية</h3><span class="muted">Timeouts AI: <b id="aiModAITimeouts">0</b> · Invalid: <b id="aiModAIInvalid">0</b> · Actions: <b id="aiModActions">0</b></span><span class="muted">الإجراءات تمر عبر Tool Layer وسياسة السيرفر</span></div><span class="panel-icon">◈</span></div><label class="switch-row"><span><b>تفعيل Moderation</b><small>فحص الرسائل الجديدة وفق الإعدادات</small></span><input type="checkbox" id="aiModEnabled"><i></i></label><label>القنوات المسموحة<select id="aiModChannels" multiple size="5"></select></label><label>أنواع الكشف<select id="aiModDetections" multiple size="5"><option value="spam">Spam</option><option value="flood">Flood</option><option value="repeated_messages">Repeated messages</option><option value="toxicity">Toxicity</option><option value="harassment">Harassment</option><option value="suspicious">Suspicious behavior</option><option value="raid_like">Raid-like activity</option><option value="character_spam">Character spam</option><option value="invite_link">Discord invites</option><option value="suspicious_links">Suspicious links</option><option value="mention_abuse">Unauthorized @everyone/@here</option><option value="long_content">Long content</option><option value="scam">Scam</option></select></label><div class="form-grid"><label>الحساسية<select id="aiModSensitivity"><option value="low">Low</option><option value="medium">Medium</option><option value="high">High</option></select></label><label>أقصى إجراءات بالساعة<input id="aiModMaxActions" type="number" min="1" max="1000" value="20"></label><label>مدة التقييد بالدقائق<input id="aiTimeout" type="number" min="1" max="60" value="10"></label></div><div class="form-grid"><label class="switch-row"><span><b>Fast Path</b><small>تدخل محلي سريع للـspam/flood الواضح</small></span><input type="checkbox" id="aiFastPath" checked><i></i></label><label>مهلة AI بالثواني<input id="aiModAITimeout" type="number" min="1" max="8" step="0.1" value="6"></label><label>نافذة الكشف بالثواني<input id="aiModWindow" type="number" min="2" max="30" value="8"></label></div><div class="form-grid"><label>تكرار قبل التدخل<input id="aiRepeatThreshold" type="number" min="2" max="10" value="5"></label><label>Flood threshold<input id="aiFloodThreshold" type="number" min="3" max="30" value="8"></label><label>منشنات قبل التدخل<input id="aiMentionThreshold" type="number" min="3" max="30" value="8"></label></div><div class="form-grid"><label>قناة سجل Moderation (ID)<input id="aiModLogChannel" inputmode="numeric" placeholder="اختياري"></label><label>Whitelist Users (IDs مفصولة بفاصلة)<input id="aiWhitelistUsers" placeholder="123,456"></label><label>Whitelist Roles (IDs مفصولة بفاصلة)<input id="aiWhitelistRoles" placeholder="123,456"></label></div><div class="form-grid"><label class="switch-row"><span><b>حذف رسائل السبام</b><small>يحذف الرسالة ومجموعة الرسائل الحديثة لنفس العضو</small></span><input type="checkbox" id="aiDeleteOffending" checked><i></i></label><label class="switch-row"><span><b>السماح بروابط دعوة السيرفر</b><small>افتراضيًا روابط الدعوة الخارجية محجوبة</small></span><input type="checkbox" id="aiAllowInvites"><i></i></label><label>نافذة Raid بالثواني<input id="aiRaidWindow" type="number" min="5" max="120" value="20"></label><label>عدد الانضمامات قبل Raid<input id="aiRaidThreshold" type="number" min="3" max="50" value="8"></label></div><div class="form-grid"><label><input id="aiActionWarn" type="checkbox"> السماح بالتحذير</label><label><input id="aiActionTimeout" type="checkbox"> السماح بالتقييد</label><label><input id="aiActionBan" type="checkbox"> السماح بالحظر كإجراء</label><label><input id="aiAllowBan" type="checkbox"> تفعيل AI Ban صراحةً</label></div><button id="saveAi" class="primary wide">حفظ الإعدادات</button><button id="aiKill" class="secondary wide">تعطيل AI Moderation فورًا</button><div id="aiSaveOut" class="inline-result"></div></article></div>
+        <article class="panel"><div class="panel-heading"><div><h3>سجل AI Moderation</h3><span class="muted">قرارات ونتائج محفوظة في SQLite</span></div><button id="refreshAiLogs" class="secondary">تحديث ↻</button></div><div class="table-wrap"><table><thead><tr><th>الوقت</th><th>العضو</th><th>التصنيف</th><th>الأداة المطلوبة</th><th>النتيجة</th><th>السبب</th></tr></thead><tbody id="aiModLogs"></tbody></table></div></article>
+      </section>
+
+      <section id="ai-chat" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">AI / CONVERSATION</span><h2>AI Chat</h2><p class="muted">مساعد مستقل بذاكرة محصورة في القنوات التي تختارها.</p></div><span class="ai-pill">✦ VIXEN CHAT</span></div>
+        <div class="ai-health-strip">
+          <div class="ai-health-card"><span class="ai-health-label">PROVIDER</span><b id="aiChatProviderState">Checking</b><small id="aiChatProviderModel">—</small></div>
+          <div class="ai-health-card"><span class="ai-health-label">LATENCY</span><b id="aiChatLatency">—</b><small><span id="aiChatFirstToken">TTFT —</span> · <span id="aiChatLastRequest">آخر طلب: —</span></small></div>
+          <div class="ai-health-card"><span class="ai-health-label">REQUESTS</span><b id="aiChatRequests">0</b><small><span id="aiChatCompleted">0</span> completed · <span id="aiChatFailed">0</span> failed</small></div>
+          <div class="ai-health-card"><span class="ai-health-label">RECOVERY</span><b id="aiChatRecovery">READY</b><small><span id="aiChatProviderRecoveries">0</span> 429 recoveries · <span id="aiChatProviderTransient">0</span> transient recoveries · <span id="aiChatProviderContinuations">0</span> continuations</small></div>
+          <div class="ai-health-card"><span class="ai-health-label">QUALITY</span><b id="aiChatQualityScore">100%</b><small><span id="aiChatQualityEvals">0</span> evaluations · self-repair enabled</small></div>
+          <div class="ai-health-card"><span class="ai-health-label">FLOW</span><b id="aiChatActiveRequests">0</b><small><span id="aiChatQueueWait">0 ms</span> queue · circuit <span id="aiChatCircuit">CLOSED</span></small></div>
+        </div>
+        <div class="content-grid atria-grid">
+          <article class="panel">
+            <div class="panel-heading"><div><h3>النطاق والسلوك</h3><span class="muted">ذاكرة سياقية حقيقية، بدون Vixen-side cooldown على Chat</span></div></div>
+            <label class="switch-row"><span><b>تفعيل AI Chat</b><small>مستقل عن AI Moderation</small></span><input type="checkbox" id="aiChatEnabled"><i></i></label>
+            <label>القنوات المسموحة<select id="aiChatChannels" multiple size="6"></select></label>
+            <label>القنوات المتجاهلة<select id="aiChatIgnored" multiple size="4"></select></label>
+            <div class="form-grid">
+              <label>نمط الرد<select id="aiChatMode"><option value="every_message">Every Message</option><option value="mention_only">Mention Only</option><option value="commands_only">Commands Only</option></select></label>
+              <label>اللغة<select id="aiChatLanguage"><option value="auto">Auto</option><option value="tunisian">Tunisian Derja</option><option value="arabic">Arabic</option><option value="french">French</option><option value="english">English</option></select></label>
+              <label>سرعة الرد / الذكاء<select id="aiChatSpeed"><option value="flash">⚡ Flash — أسرع رد</option><option value="balanced">🧠 Balanced — توازن</option><option value="deep">🧠 Deep — سياق أوسع</option></select></label>
+              <label>طول السياق<select id="aiChatContext"><option value="20">20 رسائل</option><option value="40">40 رسالة</option><option value="60">60 رسالة</option><option value="80">80 رسالة</option><option value="100">100 رسالة</option></select></label>
+              <label>الاحتفاظ بالسياق (أيام)<input id="aiChatRetention" type="number" min="1" max="3650" value="30"></label>
+              <label>Max output tokens<input id="aiChatMaxOutput" type="number" min="256" max="65536" value="2600"><small>المنظّم يختار ميزانية مناسبة حسب نوع السؤال؛ الإجابة الكاملة لا تُقصّ اصطناعيًا.</small></label>
+              <label>المرح / Humor<select id="aiChatHumor"><option value="0">0 — هادئ</option><option value="3">3 — خفيف</option><option value="5" selected>5 — طبيعي</option><option value="7">7 — مرح</option><option value="10">10 — فرفوش</option></select></label>
+              <label>الإيموجي<select id="aiChatEmoji"><option value="0">بدون</option><option value="2">قليل</option><option value="3" selected>طبيعي</option><option value="5">واضح</option><option value="10">كثير</option></select></label>
+              <label>كثافة الرد<select id="aiChatDensity"><option value="brief">مختصر</option><option value="smart" selected>ذكي ومتوازن</option><option value="detailed">مفصل</option></select></label>
+              <label>المبادرة<select id="aiChatInitiative"><option value="low">فقط المطلوب</option><option value="balanced" selected>متوازن</option><option value="proactive">استباقي عند الحاجة</option></select></label>
+              <label>ميزانية سياق الأحرف<input id="aiChatContextChars" type="number" min="12000" max="125000" step="1000" value="50000"><small>حماية من السياق الضخم مع الاحتفاظ بالموضوع المهم.</small></label>
+            </div>
+            <label class="switch-row"><span><b>Live Streaming</b><small>عرض الرد تدريجيًا في Discord وDashboard</small></span><input type="checkbox" id="aiChatStreaming" checked><i></i></label>
+            <label class="switch-row"><span><b>Smart Context</b><small>يختار السياق المرتبط فقط ويحافظ على آخر الحوار لتقليل خلط الأشخاص والمواضيع</small></span><input type="checkbox" id="aiChatSmartContext" checked><i></i></label>
+            <label class="switch-row"><span><b>Intent Router</b><small>يحدد نوع الرسالة محليًا قبل Atria ويختار ميزانية السياق والرد المناسبة</small></span><input type="checkbox" id="aiChatIntentRouter" checked><i></i></label>
+            <label class="switch-row"><span><b>Flash Path</b><small>مسار الاستجابة السريع؛ بدون انتظار أو معالجة زائدة للرسائل البسيطة</small></span><input type="checkbox" id="aiChatFlashPath" checked><i></i></label>
+            <label class="switch-row"><span><b>Quality Guard</b><small>يفحص الرد النهائي ضد خلط الأسماء واللغة والتكرار وتسريب السياق، ويصلح الأخطاء الواضحة فقط</small></span><input type="checkbox" id="aiChatQualityGuard" checked><i></i></label>
+            <label class="switch-row"><span><b>Self-Repair</b><small>إذا فشل الرد في قواعد الجودة، يعمل إصلاحًا محدودًا بدل إظهار جواب سيئ.</small></span><input type="checkbox" id="aiChatSelfRepair" checked><i></i></label>
+            <label class="switch-row"><span><b>Auto Continuation</b><small>إذا وصل الرد لنهاية الميزانية أو توقف الـstream، يكمل من آخر نقطة بدون إعادة الجواب.</small></span><input type="checkbox" id="aiChatAutoContinue" checked><i></i></label>
+            <label class="switch-row"><span><b>Micro Social Fast Lane</b><small>التحيات والشكر تمرّ بمسار محلي سريع وطبيعي؛ لا تستهلك طلب Atria ولا تتعرض لـ429 أو ردود طويلة.</small></span><input type="checkbox" id="aiChatMicroFast" checked><i></i></label>
+            <label class="switch-row"><span><b>Owner Actions</b><small>تنفيذ أوامر الإدارة بالنص للـOWNER_ID فقط</small></span><input type="checkbox" id="aiChatOwnerActions" checked><i></i></label>
+            <label class="switch-row"><span><b>Tunisian Mode</b><small>شخصية تونسية مع مطابقة لغة الكاتب</small></span><input type="checkbox" id="aiChatTunisian"><i></i></label>
+          </article>
+          <article class="panel">
+            <div class="panel-heading"><div><h3>الشخصية والاختبار</h3><span class="muted">نفس عقل Chat المستخدم في Discord + اللغة تتبع رسالة المستخدم</span></div></div>
+            <label>الاسم<input id="aiChatName" maxlength="80" value="Vixen"></label>
+            <label>النبرة<input id="aiChatTone" maxlength="80" value="friendly"></label>
+            <label>الأسلوب<input id="aiChatStyle" maxlength="120" value="conversational"></label>
+            <label>توجيه الشخصية<textarea id="aiChatPrompt" maxlength="2000"></textarea></label>
+            <button id="saveAIChat" class="primary wide">حفظ إعدادات Chat</button>
+            <div id="aiChatSaveResult" class="inline-result"></div>
+            <div class="test-lab">
+              <div class="test-lab-head"><div><b>AI Testing Lab</b><small>اختبار حقيقي لمسار Chat بنفس Orchestrator المستخدم في Discord.</small></div><span id="aiChatTestState" class="status-tag">READY</span></div>
+              <label>رسالة الاختبار<textarea id="aiChatTestPrompt" maxlength="12000" placeholder="شنوة تنجم تعمل؟ اكتب سؤال عادي، Follow-up أو طلب تقني طويل."></textarea></label>
+              <div class="actions-row"><button id="testAIChat" class="secondary">تشغيل Stream</button><button id="stopAIChatTest" class="secondary" disabled>إيقاف</button></div>
+              <div class="ai-test-meta"><span>Elapsed <b id="aiChatTestElapsed">0.0s</b></span><span>Chars <b id="aiChatTestChars">0</b></span><span>Route <b id="aiChatTestRoute">—</b></span><span>Profile <b id="aiChatTestProfile">—</b></span><span>Recovery <b id="aiChatTestRecovery">—</b></span><span>Request <b id="aiChatTestRequest">—</b></span></div>
+              <pre id="aiChatTestResult" class="ai-output"></pre>
+            </div>
+          </article>
+        </div>
+        <article class="panel"><div class="panel-heading"><div><h3>AI Chat conversations</h3><span class="muted">القناة محددة من Allowed Channels؛ سجل Chat منفصل عن سجل Moderation</span></div><button id="refreshAIChatLogs" class="secondary">تحديث ↻</button></div><label>القناة<select id="aiChatLogChannel"></select></label><div class="table-wrap"><table><thead><tr><th>الوقت</th><th>المتحدث</th><th>الرسالة</th></tr></thead><tbody id="aiChatLogs"></tbody></table></div></article>
+      </section>
+
+      <section id="voice" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">COMMUNICATION / VOICE</span><h2>Voice Control</h2><p class="muted">إدارة اتصال البوت بالقنوات الصوتية المتاحة له.</p></div><button id="refreshVoice" class="secondary">تحديث القنوات ↻</button></div>
+        <article class="panel"><div class="form-grid"><label>السيرفر<select id="voiceGuild"></select></label><label>القناة الصوتية<select id="voiceChannel"></select></label></div><div id="voiceStatus" class="inline-result"></div><div class="actions-row"><button id="voiceJoin" class="primary">Join</button><button id="voiceLeave" class="secondary">Leave</button></div></article>
+      </section>
+
+      <section id="bot-profile" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">SYSTEM / BOT PROFILE</span><h2>Bot Profile</h2><p class="muted">هوية البوت وإحصاءاته الحية من Discord Gateway.</p></div><button id="refreshBotProfile" class="secondary">تحديث ↻</button></div>
+        <article class="panel bot-profile-head"><img id="profileAvatar" class="avatar" alt="Bot avatar"><div><h3 id="profileName">—</h3><p id="profileUsername" class="muted">—</p><small id="profileId">—</small><span id="profileConnection" class="status-tag">Checking</span></div></article>
+        <div class="stat-grid"><article class="stat-card"><div class="stat-head"><span>Latency</span></div><strong id="profileLatency">—</strong></article><article class="stat-card"><div class="stat-head"><span>Uptime</span></div><strong id="profileUptime">—</strong></article><article class="stat-card"><div class="stat-head"><span>Servers</span></div><strong id="profileGuilds">—</strong></article><article class="stat-card"><div class="stat-head"><span>Members</span></div><strong id="profileMembers">—</strong></article><article class="stat-card"><div class="stat-head"><span>Commands</span></div><strong id="profileCommands">—</strong></article><article class="stat-card"><div class="stat-head"><span>AI Provider</span></div><strong id="profileAI">—</strong></article></div>
+        <article class="panel"><div class="panel-heading"><div><h3>Presence</h3><span class="muted">تُطبق فورًا عند اتصال Gateway وتُحفظ للإقلاع القادم</span></div></div><div class="form-grid"><label>Type<select id="presenceType"><option value="playing">Playing</option><option value="listening">Listening</option><option value="watching">Watching</option></select></label><label>Text<input id="presenceName" maxlength="128"></label></div><button id="savePresence" class="primary">حفظ Presence</button><div id="presenceResult" class="inline-result"></div></article>
+      </section>
+
+      <section id="terminal" class="page hidden">
+        <div class="page-intro"><div><span class="section-kicker">SYSTEM / LIVE EVENTS</span><h2>Live Terminal</h2><p class="muted">سجل حقيقي من أحداث التطبيق، مقيد بصلاحية عرض السجلات.</p></div><div class="intro-actions"><span id="terminalStatus" class="status-tag">Disconnected</span><button id="terminalToggle" class="primary">Start stream</button></div></div>
+        <article class="panel terminal-panel"><pre id="terminalOutput" class="terminal-output" aria-live="polite"></pre></article>
+      </section>
+
+      <section id="logs" class="page hidden"><div class="page-intro"><div><span class="section-kicker">AUDIT TRAIL</span><h2>سجل التدقيق</h2><p class="muted">آخر العمليات المسجلة من البوت ولوحة التحكم.</p></div><button id="refreshLogs" class="secondary">تحديث ↻</button></div><article class="panel"><div id="logsOut" class="logs-list"></div></article></section>
+
+      <section id="settings" class="page hidden"><div class="page-intro"><div><span class="section-kicker">CONFIGURATION</span><h2>الإعدادات</h2><p class="muted">حرّر إعدادات البوت بصيغة JSON واحفظها مباشرة.</p></div><button id="saveSettings" class="primary">حفظ الإعدادات <span>←</span></button></div><article class="panel settings-panel"><div class="settings-warning">⚠️ احفظ JSON صالحًا فقط. التعديلات تؤثر على ملفات البوت مباشرة.</div><textarea id="settingsEditor" class="settings-editor" spellcheck="false"></textarea><div id="settingsResult" class="inline-result"></div></article></section>
+    </main>
+  </div>
+
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-box"><div class="modal-top"><div><span class="section-kicker">COMMAND EXECUTION</span><h3 id="modalTitle"></h3></div><button id="modalClose" class="icon-button">×</button></div><p id="modalDescription" class="muted"></p><div id="modalFields" class="modal-fields"></div><div id="modalResult" class="modal-result"></div><div class="modal-actions"><button id="modalRun" class="primary">تنفيذ الأمر <span>←</span></button><button id="modalCancel" class="secondary">إلغاء</button></div></div>
+  </div>
+  <script src="/assets/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "codes": {
+    "CB-FOUNDER-7P1B8H": {
+      "rank": "founder",
+      "created_by": "1272928286585917446",
+      "created_at": 1790425822,
+      "note": "",
+      "used_by": null,
+      "used_at": null,
+      "revoked": false
+    }
+  },
+  "staff": {},
+  "usage": {
+    "1272928286585917446": {
+      "date": "2026-09-27",
+      "added": 22222222222222221721957738545785339904
+    }
+  }
+}

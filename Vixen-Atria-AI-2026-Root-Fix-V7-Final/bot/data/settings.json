@@ -1,0 +1,304 @@
+{
+  "bot": {
+    "name": "Vixen EDR",
+    "prefix": "!",
+    "currency_name": "عملة",
+    "currency_symbol": "🪙",
+    "embed_color": "#F5A623",
+    "success_color": "#2ECC71",
+    "error_color": "#E74C3C",
+    "presence": {
+      "type": "listening",
+      "name": "Vixen radio"
+    }
+  },
+  "economy": {
+    "starting_balance": 100,
+    "max_wallet": 1000000,
+    "max_bank": 5000000,
+    "daily_min": 200,
+    "daily_max": 500,
+    "daily_streak_bonus": 25,
+    "daily_streak_cap": 500,
+    "work_min": 50,
+    "work_max": 300,
+    "work_cooldown_minutes": 60,
+    "transfer_tax_percent": 2,
+    "transfer_min_amount": 10
+  },
+  "gambling": {
+    "slots_min_bet": 10,
+    "slots_max_bet": 5000,
+    "slots_win_multiplier": 3,
+    "slots_jackpot_multiplier": 10,
+    "blackjack_min_bet": 10,
+    "blackjack_max_bet": 10000,
+    "coinflip_min_bet": 10,
+    "coinflip_max_bet": 5000,
+    "gambling_enabled": true
+  },
+  "shop": {
+    "items": [
+      {
+        "id": "vip_role",
+        "name": "VIP",
+        "description": "رتبة VIP مميزة داخل السيرفر",
+        "price": 5000,
+        "type": "role",
+        "role_id": "",
+        "emoji": "👑"
+      },
+      {
+        "id": "color_role",
+        "name": "لون مخصص",
+        "description": "رتبة لون خاص باسمك",
+        "price": 2000,
+        "type": "role",
+        "role_id": "",
+        "emoji": "🎨"
+      },
+      {
+        "id": "lucky_charm",
+        "name": "تعويذة الحظ",
+        "description": "تزيد فرصة الربح في القمار لمدة ساعة",
+        "price": 1500,
+        "type": "item",
+        "role_id": "",
+        "emoji": "🍀"
+      }
+    ]
+  },
+  "roles": {
+    "level_roles": [],
+    "autorole_enabled": false,
+    "autorole_id": ""
+  },
+  "channels": {
+    "log_channel_id": "",
+    "welcome_channel_id": ""
+  },
+  "leaderboard": {
+    "show_top": 10
+  },
+  "ai": {
+    "moderation": {
+      "enabled": false,
+      "kill_switch": false,
+      "channels": [],
+      "detection_types": [
+        "spam",
+        "flood",
+        "repeated_messages",
+        "toxicity",
+        "harassment"
+      ],
+      "sensitivity": "medium",
+      "automatic_actions": [
+        "warn",
+        "timeout"
+      ],
+      "allow_ai_ban": false,
+      "max_actions_per_hour": 20,
+      "timeout_minutes": 10
+    },
+    "chat": {
+      "enabled": false,
+      "allowed_channels": [],
+      "ignored_channels": [],
+      "response_mode": "every_message",
+      "language": "tunisian",
+      "tunisian_mode": true,
+      "context_messages": 100,
+      "retention_days": 30,
+      "name": "Vixen",
+      "tone": "smart, sharp, playful Tunisian with dry sarcasm and controlled roast energy",
+      "style": "professional, natural Tunisian Discord chat with strong context and clean direct answers",
+      "system_prompt": "",
+      "streaming": true,
+      "max_output_tokens": 5200,
+      "speed_mode": "flash",
+      "smart_context_enabled": true,
+      "intent_router_enabled": true,
+      "flash_path_enabled": true,
+      "quality_guard_enabled": true,
+      "owner_actions_enabled": true,
+      "user_cooldown_seconds": 0,
+      "channel_cooldown_seconds": 0,
+      "global_cooldown_seconds": 0,
+      "context_char_budget": 50000,
+      "self_repair_enabled": true,
+      "auto_continuation_enabled": true,
+      "humor_level": 5,
+      "emoji_level": 3,
+      "answer_density": "smart",
+      "initiative": "balanced",
+      "micro_social_fast_lane": true,
+      "version": "2026.09.28-root-engineering-v4"
+    }
+  },
+  "atria": {
+    "enabled": true,
+    "moderation_enabled": false,
+    "moderation_prefixes": [
+      "[mod]",
+      "!modcheck"
+    ],
+    "moderation_mode": "all",
+    "timeout_minutes": 10
+  },
+  "dashboard": {
+    "enabled": true,
+    "host": "127.0.0.1",
+    "port": 8080
+  },
+  "ranks": {
+    "owner_id": "",
+    "permissions": {},
+    "daily_limits": {}
+  },
+  "levels": {
+    "enabled": true,
+    "xp_min": 3,
+    "xp_max": 8,
+    "xp_cooldown": 60,
+    "level_up_reward": 100,
+    "announce": true,
+    "level_roles": []
+  },
+  "bank_interest": {
+    "enabled": true,
+    "daily_rate": 2.0,
+    "max_interest": 5000,
+    "min_bank": 100
+  },
+  "stocks": {
+    "enabled": true,
+    "update_interval_min": 5,
+    "volatility": 12,
+    "symbols": [
+      {
+        "symbol": "GOLD",
+        "name": "الذهب",
+        "emoji": "🥇",
+        "base_price": 150
+      },
+      {
+        "symbol": "OIL",
+        "name": "النفط",
+        "emoji": "🛢️",
+        "base_price": 90
+      },
+      {
+        "symbol": "TECH",
+        "name": "التكنولوجيا",
+        "emoji": "💻",
+        "base_price": 250
+      },
+      {
+        "symbol": "MEME",
+        "name": "ميم كوين",
+        "emoji": "🐸",
+        "base_price": 25
+      },
+      {
+        "symbol": "ROCKET",
+        "name": "صاروخ للاستثمار",
+        "emoji": "🚀",
+        "base_price": 500
+      }
+    ]
+  },
+  "loans": {
+    "enabled": true,
+    "min_amount": 100,
+    "max_amount": 50000,
+    "default_interest": 10,
+    "max_duration_days": 7,
+    "max_active": 2
+  },
+  "rob": {
+    "enabled": true,
+    "success_chance": 45,
+    "fine_percent": 25,
+    "cooldown_minutes": 30,
+    "min_victim_wallet": 100,
+    "max_steal_percent": 40,
+    "fine_to_victim": true
+  },
+  "career": {
+    "enabled": true,
+    "work_cooldown_minutes": 45,
+    "promote_after": 10,
+    "salary_seniority_bonus": 10,
+    "jobs": [
+      {
+        "id": "delivery",
+        "name": "موظف توصيل",
+        "emoji": "🛵",
+        "tier": 1,
+        "salary": [
+          80,
+          150
+        ],
+        "req_level": 0
+      },
+      {
+        "id": "cashier",
+        "name": "كاشير",
+        "emoji": "🧾",
+        "tier": 2,
+        "salary": [
+          150,
+          260
+        ],
+        "req_level": 3
+      },
+      {
+        "id": "agent",
+        "name": "موظف مبيعات",
+        "emoji": "📊",
+        "tier": 3,
+        "salary": [
+          280,
+          450
+        ],
+        "req_level": 6
+      },
+      {
+        "id": "manager",
+        "name": "مدير فرع",
+        "emoji": "💼",
+        "tier": 4,
+        "salary": [
+          500,
+          800
+        ],
+        "req_level": 10
+      },
+      {
+        "id": "ceo",
+        "name": "المدير التنفيذي",
+        "emoji": "👔",
+        "tier": 5,
+        "salary": [
+          900,
+          1500
+        ],
+        "req_level": 15
+      }
+    ],
+    "business": {
+      "start_cost": 10000,
+      "daily_min": 100,
+      "daily_max": 400,
+      "upgrade_cost": 5000,
+      "upgrade_multiplier": 1.3,
+      "max_level": 10
+    }
+  },
+  "moderation": {
+    "warning_threshold": 10,
+    "warning_timeout_minutes": 60
+  },
+  "lockdown_state": {}
+}

@@ -1,0 +1,218 @@
+[
+  {
+    "ts": 1790425262,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /help",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425271,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /levels",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425310,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.dm",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425440,
+    "actor_id": "0",
+    "actor_name": "لوحة التحكم",
+    "action": "save_settings",
+    "details": "تعديل الإعدادات من اللوحة",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425529,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.disconnect",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425677,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.dm",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425685,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /rank",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425757,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /security.audit",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425784,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /security.invites",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425822,
+    "actor_id": "1272928286585917446",
+    "actor_name": "المالك",
+    "action": "generate_codes",
+    "details": "1 كود رتبة founder",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790425874,
+    "actor_id": "0",
+    "actor_name": "لوحة التحكم",
+    "action": "save_settings",
+    "details": "تعديل الإعدادات من اللوحة",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790426093,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.dm",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790426098,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.dm",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790439862,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.dm",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790439862,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.dm",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790439896,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.deafen",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790440021,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /member.disconnect",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790496955,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /server.lockdown",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790496967,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /server.unlockdown",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790496985,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "dashboard_command",
+    "details": "تنفيذ /server.features",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790497038,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "add_money",
+    "details": "أضاف 11111111111111110860978869272892669952 لـ 1272928286585917446 (محفظة)",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790497042,
+    "actor_id": "1272928286585917446",
+    "actor_name": "1lyc.",
+    "action": "add_money",
+    "details": "أضاف 11111111111111110860978869272892669952 لـ 1272928286585917446 (بنك)",
+    "source": "dashboard"
+  },
+  {
+    "ts": 1790627716,
+    "actor_id": "500",
+    "actor_name": "namespace(id=500)",
+    "action": "ai_moderation",
+    "details": "guild=1 target=22 requested=timeout_member result=success reason=spam flood classification=flood effective_action=timeout deleted=8 delete_status=success state_id=AI-1790627716583-22",
+    "source": "ai"
+  },
+  {
+    "ts": 1790627716,
+    "actor_id": "500",
+    "actor_name": "namespace(id=500)",
+    "action": "ai_moderation",
+    "details": "guild=1 target=22 requested=timeout_member result=skipped_trusted reason=spam trusted=guild_owner",
+    "source": "ai"
+  },
+  {
+    "ts": 1790627716,
+    "actor_id": "500",
+    "actor_name": "namespace(id=500)",
+    "action": "ai_moderation",
+    "details": "guild=1 target=22 requested=timeout_member result=success reason=spam classification=spam effective_action=warn deleted=1 delete_status=success state_id=AI-1790627716588-22",
+    "source": "ai"
+  },
+  {
+    "ts": 1790627716,
+    "actor_id": "500",
+    "actor_name": "namespace(id=500)",
+    "action": "ai_moderation",
+    "details": "guild=1 target=22 requested=timeout_member result=success reason=spam classification=spam effective_action=timeout deleted=1 delete_status=success state_id=AI-1790627716589-22",
+    "source": "ai"
+  },
+  {
+    "ts": 1790627716,
+    "actor_id": "500",
+    "actor_name": "namespace(id=500)",
+    "action": "ai_moderation",
+    "details": "guild=1 target=22 requested=timeout_member result=success reason=spam classification=spam effective_action=timeout deleted=1 delete_status=success state_id=AI-1790627716590-22",
+    "source": "ai"
+  }
+]
